@@ -1,0 +1,6 @@
+
+
+
+def get_random_name(size=9):
+    data = "azertyuiopqsdfghjkllmwxcvbn123456789AZERTYUIOPQSDFGHJKLMWXCVBN"
+    return ''.join([random.choice(data) for lettre in range(size)])
