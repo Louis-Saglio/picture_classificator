@@ -1,0 +1,9 @@
+Objectif :
+    Trouver des images sur un thème et plaisantes à l'utilisateur.
+Fonctionnement :
+    L'utilisateur choisit un thème sous forme de mots-clés hiérarchisés.
+    Le programme télécharge des images sur ce thème sur Internet.
+    Une fois que la base d'images est suffisante, le programme propose deux images à l'utilisateur.
+    Il indique au programme sa favorite et le programme attribut une note à l'image.
+    L'utilisateur répète l'oppération autant de fois que souhaité.
+    Il peut demander au programme la liste des meilleurs images.
