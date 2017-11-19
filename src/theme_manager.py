@@ -1,5 +1,6 @@
 from typing import Tuple
 from src.helpers import sample
+from itertools import chain
 
 
 class ThemeManager:
@@ -23,6 +24,7 @@ class ThemeManager:
 
     def generate_query(self):
         query = list()
-        for keywords in self.keywords:
-            query += sample(keywords)
-        return '+'.join(query)
+        for i, keywords in enumerate(self.keywords):
+            if keywords:
+                query.append(sample(keywords, len(self.keywords) - i, 1))
+        return '+'.join(list(chain(*query)))
