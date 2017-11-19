@@ -24,6 +24,5 @@ class TestThemeManager(TestCase):
 
     def test_generate_query(self):
         tm = ThemeManager()
-        tm.add_keywords(("tree", 0), ("arbre", 0), ("branche", 2))
-        query = tm.generate_query()
-        print(query)
+        tm.add_keywords(("1", 0), ("0", 1), ("2", 2))
+        tm.generate_query()
