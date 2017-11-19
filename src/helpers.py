@@ -1,9 +1,14 @@
 from random import randint, choice
 
 
-def sample(population, mini=1, maxi=None) -> list:
-    if maxi is None:
-        maxi = len(population)
-    if not maxi > mini:
+def choose(population) -> list:
+    if not population:
         return []
-    return [choice(population) for _ in range(randint(mini, maxi))]
+    else:
+        return choice(population)
+
+
+def sample(population, maxi, mini=0) -> list:
+    assert mini <= maxi, f"mini={mini}, maxi={maxi}"
+    nbr = mini if maxi == mini else randint(mini, maxi)
+    return [choose(population) for _ in range(nbr)]
