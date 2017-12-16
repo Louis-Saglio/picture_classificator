@@ -21,3 +21,9 @@ class ImageDownloader:
         saved_urls = read_from_file(self.controller.file_manager.get_saved_urls_file_path())
         soupe = bs4.BeautifulSoup(requests.get(url).content, "html.parser")
         return [image.attrs["src"] for image in soupe.findAll("img") if image.attrs["src"] not in saved_urls]
+
+    def download_image(self, image_urls=None):
+        if image_urls is None:
+            image_urls = self.get_image_urls()
+        for url in image_urls:
+            self.controller.file_manager.save_to_download(requests.get(url).content)
