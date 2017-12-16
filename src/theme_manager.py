@@ -1,12 +1,15 @@
 from typing import Tuple
-from src.helpers import sample
+from src.utils import sample
 from itertools import chain
 
 
 class ThemeManager:
 
-    def __init__(self):
+    def __init__(self, name: str):
         self.keywords = []
+        self.search_options = {"face": True}  # Mettre dans settings ?
+        self.name = name
+        self.add_keyword(name, 0)
 
     def add_keyword(self, word: str, rank: int):
         for i in range(rank+1):

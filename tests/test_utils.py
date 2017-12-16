@@ -1,9 +1,9 @@
 from unittest import TestCase
 
-from src.helpers import sample
+from src.utils import sample
 
 
-class TestHelpers(TestCase):
+class TestUtils(TestCase):
     def test_sample(self):
         pop = sample([1, 2, 3, 4, 5], 4, 4)
         self.assertEqual(len(pop), 4)

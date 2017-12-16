@@ -12,3 +12,11 @@ def sample(population, maxi, mini=0) -> list:
     assert mini <= maxi, f"mini={mini}, maxi={maxi}"
     nbr = mini if maxi == mini else randint(mini, maxi)
     return [choose(population) for _ in range(nbr)]
+
+
+def read_from_file(file):
+    try:
+        with open(file, 'r') as f:
+            return f.read()
+    except FileNotFoundError:
+        return []
