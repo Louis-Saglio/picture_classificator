@@ -16,7 +16,14 @@ class TestImageDownloader(unittest.TestCase):
     def test__write_search_url(self):
         self.assertIn("&tbs=itp:face", self.controller.image_downloader._write_search_url())
         requests.head(self.controller.image_downloader._write_search_url()).close()
-        print(self.controller.image_downloader._write_search_url())
+        url = self.controller.image_downloader._write_search_url()
+        self.assertIn(
+            url,
+            (
+                "https://www.google.fr/search?q=default&tbm=isch&tbs=itp:face",
+                "https://www.google.fr/search?q=test&tbm=isch&tbs=itp:face"
+            )
+        )
 
     def test_get_image_urls(self):
         print(self.controller.image_downloader.get_image_urls())
