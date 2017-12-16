@@ -20,3 +20,10 @@ def read_from_file(file):
             return f.read()
     except FileNotFoundError:
         return []
+
+
+def get_random_string(src, length):
+    rep = str()
+    for _ in range(length):
+        rep += src[randint(0, len(src)-1)]
+    return rep
