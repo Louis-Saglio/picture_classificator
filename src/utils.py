@@ -22,6 +22,14 @@ def read_from_file(file):
         return []
 
 
+def add_to_file(file, content):
+    try:
+        with open(file, 'a') as f:
+            f.write(content)
+    except FileNotFoundError:
+        pass
+
+
 def get_random_string(src, length):
     rep = str()
     for _ in range(length):
