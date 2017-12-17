@@ -1,10 +1,12 @@
 import hashlib
+import os
 import shutil
 import unittest
 
-import os
 import requests
+
 import src.controller
+
 
 # TODO: Supprimer les dépenance dans les tests
 
