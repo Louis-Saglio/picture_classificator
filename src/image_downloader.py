@@ -1,4 +1,5 @@
 import hashlib
+import os
 
 import bs4
 import requests
@@ -28,7 +29,9 @@ class ImageDownloader:
         if image_urls is None:
             image_urls = self.get_image_urls()
         for url in image_urls:
-            self.controller.file_manager.save_to_download(
-                requests.get(url).content,
-                hashlib.sha256(bytes(url, "utf-8")).hexdigest()
-            )
+            file_name = hashlib.sha256(bytes(url, "utf-8")).hexdigest()
+            if file_name not in os.listdir(self.controller.file_manager.telechargement_dir):
+                self.controller.file_manager.save_to_download(
+                    requests.get(url).content,
+                    file_name
+                )
