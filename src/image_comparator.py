@@ -1,5 +1,6 @@
 import os
 import random
+from statistics import mean
 
 from PIL import Image
 
@@ -20,13 +21,23 @@ class ImageComparator:
             img.show()
 
     def build_app(self):
-        images = os.listdir(self.controller.file_manager.telechargement_dir)
-        for image in images:
+        for image in os.listdir(self.controller.file_manager.telechargement_dir):
             self.images[image] = 100
 
-    def compare(self):
+    def compare(self, images=None):
+        if images is None:
+            images = random.sample(list(self.images), 2)
+        if len(images) > 2:
+            raise NotImplementedError
+        assert len(images) != 1
         if len(self.images) < 2:
             raise ValueError("Il doit y avoir au moins deux images enregistrées. Penser à lancer self.build_app()")
-        image1, image2 = random.sample(list(self.images), 2)
-        self.show_image(image1)
-        self.show_image(image2)
+        self.show_image(images[0])
+        self.show_image(images[1])
+        fav_num = self.controller.input_controller.get_fav_image()
+        other_num = 1 if fav_num == 0 else 0
+        if self.images[images[0]] == self.images[images[1]]:
+            self.images[images[fav_num]] += 10
+        elif self.images[images[fav_num]] < self.images[images[fav_num]]:
+            new_val = round(mean((self.images[images[fav_num]], self.images[images[other_num]])))
+            self.images[images[fav_num]], self.images[images[other_num]] = new_val, new_val
