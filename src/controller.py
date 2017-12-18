@@ -8,10 +8,12 @@ from src.theme_manager import ThemeManager
 
 class Controller:
 
-    def __init__(self):
+    def __init__(self, name=None):
+        if name is None:
+            name = self.input_controller.get_theme_name()
         self.settings = settings
         self.input_controller = InputController(self)
-        self.theme_manager = ThemeManager(self.input_controller.get_theme_name(auto=True))
+        self.theme_manager = ThemeManager(name)
         self.file_manager = FileManager(self)
         self.image_downloader = ImageDownloader(self)
         self.image_comparator = ImageComparator(self)
