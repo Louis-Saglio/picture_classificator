@@ -13,6 +13,10 @@ class FileManager:
         self.controller = controller
         self.root_dir = self.get_root_dir()
         self.telechargement_dir = os.path.join(self.root_dir, self.controller.settings.TELECHARGEMENT_DIR)
+        self.saved_app_file = os.path.join(
+            self.root_dir,
+            self.controller.settings.SAVED_APP_FILE_NAME_PREFIX + self.controller.theme_manager.name
+        )
         if os.path.isdir(self.root_dir):
             shutil.rmtree(self.root_dir)
         os.makedirs(self.telechargement_dir)
