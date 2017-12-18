@@ -21,6 +21,7 @@ class TestImageComparator(TestCase):
         self.controller.image_downloader.download_images()
         self.controller.image_comparator.build_app()
         self.controller.image_comparator.compare()
+        self.assertIn(110, self.controller.image_comparator.images.values())
 
     def __del__(self):
         shutil.rmtree(self.controller.file_manager.root_dir)
