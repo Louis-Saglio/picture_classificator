@@ -1,3 +1,6 @@
+import dill
+# I use dill instead of pickle because pickle can't dump module objects and controller.settings is a module object
+
 import settings
 from src.file_manager import FileManager
 from src.image_comparator import ImageComparator
@@ -17,3 +20,7 @@ class Controller:
         self.file_manager = FileManager(self)
         self.image_downloader = ImageDownloader(self)
         self.image_comparator = ImageComparator(self)
+
+    def save(self):
+        with open(self.file_manager.saved_app_file, 'wb') as f:
+            dill.dump(self, f)
