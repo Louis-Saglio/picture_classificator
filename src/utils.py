@@ -3,6 +3,7 @@ from random import randint, choice
 
 def choose(population) -> list:
     if not population:
+        # todo: test
         return []
     else:
         return choice(population)
@@ -17,17 +18,10 @@ def sample(population, maxi, mini=0) -> list:
 def read_from_file(file):
     try:
         with open(file, 'r') as f:
+            # todo: test
             return f.read()
     except FileNotFoundError:
         return []
-
-
-def add_to_file(file, content):
-    try:
-        with open(file, 'a') as f:
-            f.write(content)
-    except FileNotFoundError:
-        pass
 
 
 def get_random_string(src, length):
