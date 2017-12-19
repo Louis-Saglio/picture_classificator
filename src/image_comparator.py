@@ -28,9 +28,11 @@ class ImageComparator:
         if images is None:
             images = random.sample(list(self.images), 2)
         if len(images) > 2:
+            # todo: test
             raise NotImplementedError
         assert len(images) != 1
         if len(self.images) < 2:
+            # todo: test
             raise ValueError("Il doit y avoir au moins deux images enregistrées. Penser à lancer self.build_app()")
         self.show_image(images[0])
         self.show_image(images[1])
@@ -38,6 +40,7 @@ class ImageComparator:
         other_num = 1 if fav_num == 0 else 0
         if self.images[images[0]] == self.images[images[1]]:
             self.images[images[fav_num]] += 10
+        # todo: test
         elif self.images[images[fav_num]] < self.images[images[fav_num]]:
             new_val = round(mean((self.images[images[fav_num]], self.images[images[other_num]])))
             self.images[images[fav_num]], self.images[images[other_num]] = new_val, new_val

@@ -6,6 +6,7 @@ class InputController:
     def input(self, message):
         received = input(message)
         if received.lower() == 'stop':
+            # todo: test
             self.controller.save()
             exit(0)
         return received
@@ -13,6 +14,7 @@ class InputController:
     def get_theme_name(self, auto=True):
         if auto:
             return self.controller.settings.DEFAULT_APP_NAME
+        # todo: test
         return self.input("Choisissez un nom pour ce système de gestion : >>> ")
 
     def get_fav_image(self, nbr=2):
@@ -21,6 +23,7 @@ class InputController:
             try:
                 if 0 < int(rep) <= nbr:
                     return int(rep) - 1
+            # todo: test
             except TypeError:
                 pass
             print(f"Vous devez choisir un nombre entre 1 et {nbr} inclus")
