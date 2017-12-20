@@ -1,0 +1,2 @@
+class EndProgramSignal(BaseException):
+    pass
