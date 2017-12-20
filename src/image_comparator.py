@@ -30,10 +30,10 @@ class ImageComparator:
         if len(images) > 2:
             # todo: test
             raise NotImplementedError
-        assert len(images) != 1
         if len(self.images) < 2:
             # todo: test
             raise ValueError("Il doit y avoir au moins deux images enregistrées. Penser à lancer self.build_app()")
+        # todo: show_images(...)
         self.show_image(images[0])
         self.show_image(images[1])
         fav_num = self.controller.input_controller.get_fav_image()
