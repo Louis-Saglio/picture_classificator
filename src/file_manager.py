@@ -6,7 +6,7 @@ from src.utils import get_random_string
 
 class FileManager:
 
-    def __init__(self, controller):
+    def __init__(self, controller, delete=True):
         """
         :type controller: src.controller.Controller
         """
@@ -17,9 +17,9 @@ class FileManager:
             self.root_dir,
             self.controller.settings.SAVED_APP_FILE_NAME_PREFIX + self.controller.theme_manager.name
         )
-        if os.path.isdir(self.root_dir):
+        if os.path.isdir(self.root_dir) and delete:
             shutil.rmtree(self.root_dir)
-        os.makedirs(self.telechargement_dir)
+            os.makedirs(self.telechargement_dir)
 
     def get_root_dir(self):
         """Retourne le dossier racine des données de l'application"""
