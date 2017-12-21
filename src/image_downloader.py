@@ -25,9 +25,13 @@ class ImageDownloader:
         soupe = bs4.BeautifulSoup(requests.get(url).content, "html.parser")
         return [image.attrs["src"] for image in soupe.findAll("img") if image.attrs["src"] not in saved_urls]
 
-    def download_images(self, image_urls=None):
+    def download_images(self, image_urls=None, image_nbr=20):
+        # todo: test
+        # todo: merge image_urls & image_nbr
         if image_urls is None:
-            image_urls = self.get_image_urls()
+            image_urls = set()
+            while len(image_urls) < image_nbr:
+                image_urls.update(self.get_image_urls())
         for url in image_urls:
             file_name = hashlib.sha256(bytes(url, "utf-8")).hexdigest()
             if file_name not in os.listdir(self.controller.file_manager.telechargement_dir):
