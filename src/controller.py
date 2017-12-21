@@ -11,16 +11,22 @@ from src.theme_manager import ThemeManager
 
 class Controller:
 
-    def __init__(self, name=None):
+    def __init__(self, name=None, delete=True):
         self.settings = settings
         self.input_controller = InputController(self)
         if name is None:
             name = self.input_controller.get_theme_name()
         self.theme_manager = ThemeManager(name)
-        self.file_manager = FileManager(self)
+        self.file_manager = FileManager(self, delete)
         self.image_downloader = ImageDownloader(self)
         self.image_comparator = ImageComparator(self)
 
     def save(self):
         with open(self.file_manager.saved_app_file, 'wb') as f:
             dill.dump(self, f)
+
+    @staticmethod
+    def load(name):
+        controller = Controller(name, False)
+        with open(controller.file_manager.saved_app_file, 'rb') as f:
+            return dill.load(f)
