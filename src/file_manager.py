@@ -43,3 +43,8 @@ class FileManager:
             file_name = self.get_random_file_name(self.telechargement_dir)
         with open(os.path.join(self.telechargement_dir, file_name), 'wb') as f:
             f.write(content)
+
+    def remove_image_file(self, file_name):
+        file = os.path.join(self.telechargement_dir, file_name)
+        if os.path.isfile(file):
+            os.remove(file)
