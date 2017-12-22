@@ -12,6 +12,8 @@ controller.theme_manager.add_ranked_keywords(4, "Python", "Golang")
 controller.theme_manager.search_options["face"] = False
 controller.image_downloader.download_images(image_nbr=5)
 controller.image_comparator.build_app()
+controller.image_selector.get_x_pct_best_images(10)
+controller.image_selector.delete_x_pct_worst_images(50)
 while True:
     try:
         controller.image_comparator.compare()
