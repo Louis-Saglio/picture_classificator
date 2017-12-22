@@ -5,6 +5,7 @@ import settings
 from src.file_manager import FileManager
 from src.image_comparator import ImageComparator
 from src.image_downloader import ImageDownloader
+from src.image_selector import ImageSelector
 from src.input_controller import InputController
 from src.theme_manager import ThemeManager
 
@@ -20,6 +21,7 @@ class Controller:
         self.file_manager = FileManager(self, delete)
         self.image_downloader = ImageDownloader(self)
         self.image_comparator = ImageComparator(self)
+        self.image_selector = ImageSelector(self)
 
     def save(self):
         with open(self.file_manager.saved_app_file, 'wb') as f:
