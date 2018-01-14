@@ -1,4 +1,3 @@
-import src.exceptions
 from src.controller import Controller
 
 # todo: log
@@ -14,10 +13,4 @@ controller.image_downloader.download_images(image_nbr=5)
 controller.image_comparator.build_app()
 controller.image_selector.get_x_pct_best_images(10)
 controller.image_selector.delete_x_pct_worst_images(50)
-while True:
-    try:
-        controller.image_comparator.compare()
-    except src.exceptions.EndProgramSignal:
-        print("Le programme s'est terminé normalement.")
-        controller.save()
-        exit(0)
+controller.image_comparator.compare_loop()

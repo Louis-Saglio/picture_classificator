@@ -4,6 +4,8 @@ from statistics import mean
 
 from PIL import Image
 
+import src.exceptions
+
 
 class ImageComparator:
 
@@ -44,3 +46,10 @@ class ImageComparator:
         elif self.images[images[fav_num]] < self.images[images[fav_num]]:
             new_val = round(mean((self.images[images[fav_num]], self.images[images[other_num]])))
             self.images[images[fav_num]], self.images[images[other_num]] = new_val, new_val
+
+    def compare_loop(self):
+        while True:
+            try:
+                self.compare()
+            except src.exceptions.EndProgramSignal:
+                self.controller.save()
