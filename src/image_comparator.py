@@ -53,3 +53,4 @@ class ImageComparator:
                 self.compare()
             except src.exceptions.EndProgramSignal:
                 self.controller.save()
+                break
