@@ -17,10 +17,15 @@ class InputController:
             received = random.choice(possible_values)
         else:
             received = input(message)
-        if received.lower() == 'stop':
-            self.controller.save()
-            raise src.exceptions.EndProgramSignal
+        try:
+            self.controller.signals_manager.handle_signal(InputController.format(received))
+        except src.exceptions.InvalidSignalError:
+            pass
         return received
+
+    @staticmethod
+    def format(message):
+        return message.strip().lower()
 
     def get_theme_name(self):
         return self.input(
