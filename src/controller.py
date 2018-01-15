@@ -16,6 +16,7 @@ class Controller:
     def __init__(self, name=None, delete=True):
         self.settings = settings
         self.input_controller = InputController(self)
+        self.signals_manager = SignalManager(self)
         if name is None:
             name = self.input_controller.get_theme_name()
         self.theme_manager = ThemeManager(name)
@@ -23,7 +24,6 @@ class Controller:
         self.image_downloader = ImageDownloader(self)
         self.image_comparator = ImageComparator(self)
         self.image_selector = ImageSelector(self)
-        self.signals_manager = SignalManager(self)
 
     def save(self):
         with open(self.file_manager.saved_app_file, 'wb') as f:
