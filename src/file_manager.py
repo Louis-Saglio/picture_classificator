@@ -17,8 +17,10 @@ class FileManager:
             self.root_dir,
             self.controller.settings.SAVED_APP_FILE_NAME_PREFIX + self.controller.theme_manager.name
         )
-        if os.path.isdir(self.root_dir) and delete:
-            shutil.rmtree(self.root_dir)
+        if os.path.isdir(self.root_dir):
+            if delete:
+                shutil.rmtree(self.root_dir)
+        else:
             os.makedirs(self.telechargement_dir)
 
     def get_root_dir(self):
